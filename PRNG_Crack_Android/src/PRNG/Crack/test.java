@@ -1,5 +1,7 @@
 package PRNG.Crack;
 
 public class test {
-gghjg
+	
+	private String blub;
+
 }
