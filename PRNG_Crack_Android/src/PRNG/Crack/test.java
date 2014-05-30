@@ -2,6 +2,6 @@ package PRNG.Crack;
 
 public class test {
 	
-	private String blub;
+	private String Tunfish;
 
 }
