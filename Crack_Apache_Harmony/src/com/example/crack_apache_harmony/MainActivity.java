@@ -52,7 +52,8 @@ public class MainActivity extends ActionBarActivity implements
 		SHA1PRNG_SecureRandomImpl rng = new SHA1PRNG_SecureRandomImpl();
 		byte[] testArray = new byte[20];
 		rng.engineNextBytes(testArray);
-		Log.i("RNG_Test", testArray.toString());
+
+		Log.i("RNG_Test", ByteToString(testArray));
 	}
 
 	@Override
@@ -85,7 +86,13 @@ public class MainActivity extends ActionBarActivity implements
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setTitle(mTitle);
 	}
-
+	public String ByteToString(byte [] bytes){
+		String values ="";
+		for(byte i : bytes){
+			values =values + Byte.toString(i)+",";
+		}
+		return values;
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (!mNavigationDrawerFragment.isDrawerOpen()) {
