@@ -1,4 +1,6 @@
-package com.example.crack_apache_harmony;
+package crack_apache_harmony;
+
+import com.example.crack_apache_harmony.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;

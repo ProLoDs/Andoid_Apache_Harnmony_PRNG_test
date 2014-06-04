@@ -24,6 +24,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.security.InvalidParameterException;
 import java.security.SecureRandomSpi;
+import java.util.Arrays;
+
+import android.util.Log;
 import libcore.io.Streams;
 import libcore.util.EmptyArray;
 
@@ -364,15 +367,16 @@ public class SHA1PRNG_SecureRandomImpl extends SecureRandomSpi implements Serial
                 copies[EXTRAFRAME_OFFSET] = seed[FRAME_LENGTH];
                 copies[EXTRAFRAME_OFFSET + 1] = seed[FRAME_LENGTH + 1];
             }
-
+            
+            Log.i("RNG_Test", Arrays.toString(seed));
             SHA1Impl.computeHash(seed);
 
             if (seed[BYTES_OFFSET] > MAX_BYTES) {
-
+            	Log.i("RNG_Test", "Seed > MAX_BYTES --> 48 ");
                 System.arraycopy(seed, 0, copies, FRAME_OFFSET, FRAME_LENGTH);
                 System.arraycopy(copies, EXTRAFRAME_OFFSET, seed, 0,
                         FRAME_LENGTH);
-
+                Log.i("RNG_Test", Arrays.toString(seed));
                 SHA1Impl.computeHash(seed);
                 System.arraycopy(copies, FRAME_OFFSET, seed, 0, FRAME_LENGTH);
             }

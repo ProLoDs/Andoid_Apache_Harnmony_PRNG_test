@@ -1,25 +1,21 @@
-package com.example.crack_apache_harmony;
+package crack_apache_harmony;
 
-import java.security.SecureRandom;
+import com.example.crack_apache_harmony.R;
 
 import PRNG.Crack.SHA1PRNG_SecureRandomImpl;
+import android.app.ActionBar;
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements
@@ -49,11 +45,11 @@ public class MainActivity extends ActionBarActivity implements
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
 				(DrawerLayout) findViewById(R.id.drawer_layout));
-		SHA1PRNG_SecureRandomImpl rng = new SHA1PRNG_SecureRandomImpl();
-		byte[] testArray = new byte[20];
-		rng.engineNextBytes(testArray);
-
-		Log.i("RNG_Test", ByteToString(testArray));
+		
+		
+		//Log.i("RNG_Test", ByteToString(testArray));
+		ClientThread t = new ClientThread();
+		t.start();
 	}
 
 	@Override
@@ -80,12 +76,12 @@ public class MainActivity extends ActionBarActivity implements
 		}
 	}
 
-	public void restoreActionBar() {
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setTitle(mTitle);
-	}
+//	public void restoreActionBar() {
+//		ActionBar actionBar = getSupportActionBar();
+//		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//		actionBar.setDisplayShowTitleEnabled(true);
+//		actionBar.setTitle(mTitle);
+//	}
 	public String ByteToString(byte [] bytes){
 		String values ="";
 		for(byte i : bytes){
@@ -100,7 +96,7 @@ public class MainActivity extends ActionBarActivity implements
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
 			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
+			//restoreActionBar();
 			return true;
 		}
 		return super.onCreateOptionsMenu(menu);

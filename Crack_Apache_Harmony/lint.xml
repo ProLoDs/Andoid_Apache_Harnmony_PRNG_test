@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="NewApi" severity="ignore" />
+    <issue id="TrulyRandom">
+        <ignore path="src/com/example/crack_apache_harmony/ClientThread.java" />
+    </issue>
 </lint>
